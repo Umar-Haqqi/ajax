@@ -6,32 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+</style>
 
 <body>
-    <script>
-        const url = 'https://api.github.com/users/Umar-Haqqi';
 
-        function fetchData() {
+    <div class="container">
+        <h2 id="username">My GitHub Username: </h2>
+        <h2 id="location">My Location: </h2>
 
-            const xhr = new XMLHttpRequest();
-            xhr.open('GET', url, true);
-            xhr.send();
+        <button id="btn">Show Data</button>
+    </div>
 
-            xhr.onload = () => {
-                if (xhr.status == 200) {
-                    const apiResponse = JSON.parse(xhr.responseText);
-                    console.log(apiResponse);
-                    console.log(apiResponse.login);
-                }
-                else {
-                    console.log("error !!!", xhr.status);
-                }
-            }
-        }
-
-        fetchData();
-
-    </script>
+    <script src="script.js"></script>
 
 </body>
 
