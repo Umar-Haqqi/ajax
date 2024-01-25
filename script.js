@@ -1,25 +1,38 @@
-let url = 'https://api.github.com/users/Umar-Haqqi';
+document.querySelector('#btn').addEventListener('click', clickHandler);
 
-document.querySelector('#btn').addEventListener('click', () => {
-    getData(renderData);
-});
+function clickHandler() {
+    console.log('button clicked');
 
-function getData(res) {
+    // init an xhr object
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', url, true);
+
+    // open the object 
+    xhr.open('GET', 'data.json', true);
+
+    // optional
+    xhr.onprogress = function () {
+        console.log("in process...", xhr.readyState);
+    }
+
+    xhr.onreadystatechange = function () {
+        console.log('ready state is ', xhr.readyState);
+    }
+
+    // when reponse is ready
     xhr.onload = function () {
-        if (xhr.status == 200) {
-            res(xhr.responseText);
+        if (this.status == 200) {
+            console.log(this.responseText);
+        }
+        else {
+            console.log("some error occured", this.status);
         }
     }
+
+    // send the request
     xhr.send();
 }
 
-function renderData(res) {
-    let data = JSON.parse(res);
-    document.querySelector('#username').innerHTML = `${data.login}`;
-    document.querySelector('#location').innerHTML = `${data.location}`;
-}
+
 
 
 
