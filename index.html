@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const url = 'https://api.github.com/users/Umar-Haqqi';
+
+        function fetchData() {
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('GET', url, true);
+            xhr.send();
+
+            xhr.onload = () => {
+                if (xhr.status == 200) {
+                    const apiResponse = JSON.parse(xhr.responseText);
+                    console.log(apiResponse);
+                    console.log(apiResponse.login);
+                }
+                else {
+                    console.log("error !!!", xhr.status);
+                }
+            }
+        }
+
+        fetchData();
+
+    </script>
+
+</body>
+
+</html>
